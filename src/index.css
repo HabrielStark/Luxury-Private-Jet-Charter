@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 225 60% 50%;
+    --color-secondary: 190 100% 60%;
+    --color-accent: 280 100% 60%;
+    --color-background: 220 20% 10%;
+    --color-foreground: 220 10% 98%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .neon-text {
+    text-shadow: 0 0 5px theme('colors.primary.500'),
+                 0 0 10px theme('colors.primary.500'),
+                 0 0 20px theme('colors.primary.500');
+  }
+  
+  .neon-border {
+    box-shadow: 0 0 5px theme('colors.primary.500'),
+                0 0 10px theme('colors.primary.500');
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-md 
+           transition-all duration-300 transform hover:scale-105 
+           shadow-lg hover:shadow-primary-500/50;
+  }
+  
+  .input-field {
+    @apply w-full p-3 bg-background/80 border border-white/20 rounded-md 
+           focus:outline-none focus:ring-2 focus:ring-primary-500 
+           text-foreground placeholder:text-gray-400;
+  }
+}
+
+/* 3D Scroll Effect */
+.jet-interior-container {
+  perspective: 1000px;
+}
+
+.jet-interior-content {
+  transform-style: preserve-3d;
+}
+
+/* Cloud Animation */
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  filter: blur(20px);
+}
